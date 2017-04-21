@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=CreatureCreator
+comment1.params=world
+comment1.target=CreatureCreator(greenfoot.World)
+comment2.params=
+comment2.target=void\ randomCreatureSage()
+comment3.params=
+comment3.target=void\ randomCreaturePredatorSage()
+comment4.params=
+comment4.target=void\ addCreatureSage()
+comment5.params=
+comment5.target=void\ addCreaturePredatorSage()
+comment6.params=low\ high
+comment6.target=int\ randomRange(int,\ int)
+comment7.params=
+comment7.target=java.awt.Color\ randomColor()
+numComments=8

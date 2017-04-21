@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Berry
+comment1.params=
+comment1.target=Berry()
+comment2.params=
+comment2.target=void\ addFood()
+comment3.params=low\ high
+comment3.target=int\ randomRange(int,\ int)
+numComments=4
