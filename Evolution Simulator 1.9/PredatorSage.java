@@ -154,7 +154,7 @@ public class PredatorSage extends Creature
                     duration = duration + 100;
                     addEnergy();
                     matthew.removeObject(a);
-                                 
+                     //comment            
                  }
             }
          }
