@@ -48,6 +48,7 @@ public class MyWorld extends World
     
         public void act()
     {       
+       keyCommands();
        checkDead();//calls checkDead
        label.setValue(getPopulation());//gets the number for the label
        numberOfCreatures = getPopulation();//sets the number to a variable
@@ -91,6 +92,20 @@ public class MyWorld extends World
 
         PredatorSage predatorSage = new PredatorSage(duration, rotation, color, origDuration);
         addObject(predatorSage,randomRange(0,getWidth()),randomRange(0,getHeight()  )  );
+        
+    }
+    public void keyCommands()
+    {
+        if(Greenfoot.isKeyDown("a"))
+        {
+            addCreatureSage();
+        }
+        
+        if(Greenfoot.isKeyDown("s"))
+        {
+            addCreaturePredatorSage();
+        }
+        
         
     }
         
