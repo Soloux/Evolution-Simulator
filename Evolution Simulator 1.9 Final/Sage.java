@@ -40,28 +40,30 @@ public class Sage extends Creature
             public void PrioritySpinner()
             {
 
-                     if(getWorld() != null )
+                if(getWorld() != null)
+              {
+                List<Berry> berries = (List<Berry>) getObjectsInRange(10000, Berry.class);
+                if(berries.size() >= 0)
+                {
+                    spinTowardsBarry();
+                }
+                
+                
+               }
+               
+                 if(getWorld() != null )
+                {
+                   List<PredatorSage> PredatorSage = (List<PredatorSage>) getObjectsInRange(1000, PredatorSage.class);
+                    if(PredatorSage.size() >= 0)
                     {
-                       List<PredatorSage> PredatorSage = (List<PredatorSage>) getObjectsInRange(1000, PredatorSage.class);
-                        if(PredatorSage.size() >= 0)
-                        {
-                              spinAwayFromPredatorSage();
-                        }
-                        
-                    
-                  
+                          spinAwayFromPredatorSage();
                     }
                     
-                   if(getWorld() != null)
-                  {
-                    List<Berry> berries = (List<Berry>) getObjectsInRange(10000, Berry.class);
-                    if(berries.size() >= 0)
-                    {
-                        spinTowardsBarry();
-                    }
-                    
-                    
-                   }
+                
+              
+                }
+                
+                   
             }
         
             public void spinTowardsBarry()
