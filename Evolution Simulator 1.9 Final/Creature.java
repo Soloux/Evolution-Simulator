@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.awt.Color;
  
 
-public class Creature extends Actor
+public class Creature extends Actor implements Impassable
 {
     int speed;
     int origSpeed;
@@ -44,21 +44,37 @@ public class Creature extends Actor
         
             public void act() 
     {
-       bounceFromWall();
-       Lifetime();
-       energyLevel();
-       duration--;
-       energy--;
-       moveAround();
+          if(getWorld() != null)
+          {
+           bounceFromWall();
+           Lifetime();
+           energyLevel();
+           duration--;
+           energy--;
+           moveAround();
+        }
     }
     
     public void moveAround()
     {
-        move(speed);
-        if(Greenfoot.getRandomNumber(100) < 10)
-        {turn(Greenfoot.getRandomNumber(90) - 45);
-        }
+        
+        if(hitImpassable() == false && getWorld() != null)
+                {  
+                   move(speed);
+                    if(Greenfoot.getRandomNumber(100) < 10)
+                    {turn(Greenfoot.getRandomNumber(90) - 45);
+                     
+                    }
+                }
+                
+                
+          else if(hitImpassable() && getWorld() != null)
+          {
+              bounceFromEachOther();
+            }
+
     }
+    
     
     
     public void Lifetime()
@@ -151,7 +167,33 @@ public class Creature extends Actor
                 }  
                    
         }    
+        
+        protected boolean hitImpassable()
+    {
+        if(isTouching(Impassable.class))
+        {
+            return true;
+            
+        }
+        
+        return false;
+    }
     
+    public void  bounceFromEachOther()
+            {
+                    
+              if(getWorld() != null)
+                    {
+                    Sage e = (Sage) getOneIntersectingObject(Sage.class);
+                      if(e != null)
+                      {
+                        turn(degree);
+                        move(speed);
+                        move(speed);
+                        move(speed);
+                      }
+                    }
+            }
     
     public int getOriginalVariables()
     {

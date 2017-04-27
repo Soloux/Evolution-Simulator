@@ -159,8 +159,6 @@ public class Sage extends Creature
                     }
             }
         
-        
-        
             public int randomRange(int low, int high)
             {
                 return (int) ((high - low) * Math.random()) + low;
@@ -168,9 +166,10 @@ public class Sage extends Creature
             
             public void act() 
             {
-               bounceFromEachOther();
+               //bounceFromEachOther();
+                super.act();
                PrioritySpinner();
                getEnergy();
-               super.act();
+              
             }    
 }
