@@ -170,6 +170,7 @@ public class Sage extends Creature
                 super.act();
                PrioritySpinner();
                getEnergy();
+            
               
             }    
 }
