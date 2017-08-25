@@ -7,7 +7,9 @@ public class MyWorld extends World
     private BerryCreator foodCreator;
     private CreatureCreator creatureCreator;
     int tick = 0;
-    Label label;
+    Label labe1;
+    Label labe2;
+    Label labe3;
     int numberOfCreatures;
     int XValue = 10;
     int YValue = 10;
@@ -22,8 +24,15 @@ public class MyWorld extends World
         creatureCreator.randomCreatureSage();//places it randomly on the map
         creatureCreator.randomCreaturePredatorSage();//places it randomly on the map
         //label
-        label = new Label(getPopulation(), 40);//sets label as a new object
-        addObject(label, 20, 20);//puts this label in the world
+        labe1 = new Label(getPopulation(), 40);//sets label as a new object
+        addObject(labe1, 103, 89);//puts this label in the world
+        
+        labe2 = new Label(getPopulationSage(), 40);//sets label as a new object
+        addObject(labe2, 77, 56);//puts this label in the world
+        
+        labe3 = new Label(getPopulationPredatorSage(), 40);//sets label as a new object
+        addObject(labe3, 130, 23);//puts this label in the world
+        
         //berry
          foodCreator = new BerryCreator(this);//renames berrycreator
          foodCreator.randomBerry();//calls randomberry from berrycreator
@@ -42,16 +51,24 @@ public class MyWorld extends World
         foodCreator = new BerryCreator(this);//renames berrycreator
         foodCreator.randomBerry();//calls randomberry from berrycreator
         //label
-        label = new Label(getPopulation(), 40);//sets label as a new object
-        addObject(label, 20, 20);//puts this label in the world
+        labe1 = new Label(getPopulation(), 40);//sets label as a new object
+        addObject(labe1, 103, 89);//puts this label in the world
+        
+        labe2 = new Label(getPopulationSage(), 40);//sets label as a new object
+        addObject(labe2, 77, 56);//puts this label in the world
+        
+        labe3 = new Label(getPopulationPredatorSage(), 40);//sets label as a new object
+        addObject(labe3, 130, 23);//puts this label in the world
     }
     
         public void act()
     {       
        keyCommands();
-       checkDead();//calls checkDead
-       label.setValue(getPopulation());//gets the number for the label
        numberOfCreatures = getPopulation();//sets the number to a variable
+       checkDead();//calls checkDead
+       labe1.setValue(getPopulation() +" Creatures");//gets the number for the label
+       labe2.setValue(getPopulationSage()+" Sages");
+       labe3.setValue(getPopulationPredatorSage()+" PredatorSages");
        tick++;//adds        
        if(tick % 10 == 0)//adds food every ten acts
        {
@@ -65,6 +82,18 @@ public class MyWorld extends World
         return creatures.size();
     }
     
+    public int getPopulationSage()
+    { 
+        List<Sage> sage =  (List<Sage>)  getObjects(Sage.class);
+        return sage.size();
+    }
+    
+    public int getPopulationPredatorSage()
+    { 
+        List<PredatorSage> predatorSage =  (List<PredatorSage>)  getObjects(PredatorSage.class);
+        return predatorSage.size();
+    }
+    
     public int randomRange(int low, int high)//makes us able to actually get a random number
         {
             return (int) ((high - low) * Math.random()) + low;
@@ -76,7 +105,7 @@ public class MyWorld extends World
         int duration = randomRange(800,1200);
         int rotation = randomRange(0, 360);
         int origDuration = duration;
-         Color color = CreatureCreator.randomColor();
+        Color color = CreatureCreator.randomColor();
         
         Sage sage = new Sage(duration, rotation, color, origDuration);
         addObject(sage,randomRange(0,getWidth()),randomRange(0,getHeight()));

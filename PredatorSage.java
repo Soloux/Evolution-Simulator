@@ -199,15 +199,17 @@ public class PredatorSage extends Creature
                 if(getWorld() != null)
               { 
                   Lifetime();
+                  energyLevel();
                   PrioritySpinner();
                   bounceFromWall();
                   bounceFromEachOther();
                   moveAround();
                   duration--;
                   energy--;
-                  energyLevel();
+                  
                   devour();
-            }
+                
+           }
            
         }    
 }

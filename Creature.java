@@ -115,7 +115,8 @@ public class Creature extends Actor implements Impassable
     
            public void bounceFromWall()
     {
-            
+       if(getWorld() != null)
+            {     
       if (isAtEdge() == true)
         {
              turn(degree);
@@ -124,7 +125,7 @@ public class Creature extends Actor implements Impassable
          else  
          {
          }
-    }
+    }}
     
    
     
@@ -162,14 +163,17 @@ public class Creature extends Actor implements Impassable
         
         protected boolean hitImpassable()
     {
+          if(getWorld() != null)
+                {
         if(isTouching(Impassable.class))
         {
             return true;
             
         }
-        
-        return false;
     }
+        return false;
+        }
+            
     
     public void  bounceFromEachOther()
             {
